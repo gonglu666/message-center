@@ -1,4 +1,4 @@
-package cn.gt.template;
+package cn.gt.msg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

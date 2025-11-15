@@ -48,6 +48,12 @@ public class ProducerMessageLog implements Serializable {
     private String topicName;
 
     /**
+     * 消息Key
+     */
+    @TableField("message_key")
+    private String messageKey;
+
+    /**
      * 生产者应用
      */
     @TableField("producer_app")

@@ -1,0 +1,75 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: message-center-test
+  
+  # H2内存数据库用于测试
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+  
+  # Kafka配置（测试环境）
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      retries: 0
+      batch-size: 16384
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+      auto-offset-reset: latest
+      
+  # Redis配置（测试环境）
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    
+  # Elasticsearch配置（测试环境）
+  elasticsearch:
+    uris: http://localhost:9200
+
+# MyBatis-Plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: cn.gt.msg.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+# Apollo配置（测试环境禁用）
+apollo:
+  bootstrap:
+    enabled: false
+
+# 消息中心自定义配置
+message-center:
+  retry:
+    enabled: true
+    intervals: 10,30
+    max-count: 2
+  push:
+    default-timeout: 30000
+  elasticsearch:
+    producer-log-index: producer_message_log_index_test
+    consumer-log-index: consumer_push_log_index_test
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    cn.gt.msg: DEBUG

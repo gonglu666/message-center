@@ -71,6 +71,18 @@ public class ConsumerRegistry implements Serializable {
     private Integer retryCount;
 
     /**
+     * 最大重试次数
+     */
+    @TableField("max_retry_count")
+    private Integer maxRetryCount;
+
+    /**
+     * 重试间隔配置
+     */
+    @TableField("retry_intervals")
+    private String retryIntervals;
+
+    /**
      * 状态：0-禁用，1-启用
      */
     @TableField("status")

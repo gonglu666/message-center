@@ -48,6 +48,12 @@ public class ConsumerPushLog implements Serializable {
     private Long consumerId;
 
     /**
+     * 消费者名称
+     */
+    @TableField("consumer_name")
+    private String consumerName;
+
+    /**
      * 消费者URL
      */
     @TableField("consumer_url")

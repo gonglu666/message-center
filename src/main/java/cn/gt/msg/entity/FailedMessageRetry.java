@@ -53,6 +53,12 @@ public class FailedMessageRetry implements Serializable {
     private Long consumerId;
 
     /**
+     * 消息内容
+     */
+    @TableField("message_content")
+    private String messageContent;
+
+    /**
      * 当前重试次数
      */
     @TableField("retry_count")
@@ -87,6 +93,12 @@ public class FailedMessageRetry implements Serializable {
      */
     @TableField("last_error_message")
     private String lastErrorMessage;
+
+    /**
+     * 错误信息
+     */
+    @TableField("error_message")
+    private String errorMessage;
 
     /**
      * 创建时间

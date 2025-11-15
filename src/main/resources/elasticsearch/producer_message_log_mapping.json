@@ -1,0 +1,58 @@
+{
+  "mappings": {
+    "properties": {
+      "message_id": {
+        "type": "keyword"
+      },
+      "template_id": {
+        "type": "keyword"
+      },
+      "topic_name": {
+        "type": "keyword"
+      },
+      "producer_app": {
+        "type": "keyword"
+      },
+      "request_body": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "response_result": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "status": {
+        "type": "byte"
+      },
+      "error_message": {
+        "type": "text"
+      },
+      "kafka_offset": {
+        "type": "long"
+      },
+      "kafka_partition": {
+        "type": "integer"
+      },
+      "created_time": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  },
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 1,
+    "index.lifecycle.name": "message-log-policy",
+    "index.lifecycle.rollover_alias": "producer_message_log"
+  }
+}

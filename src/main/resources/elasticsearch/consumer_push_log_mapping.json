@@ -1,0 +1,60 @@
+{
+  "mappings": {
+    "properties": {
+      "message_id": {
+        "type": "keyword"
+      },
+      "template_id": {
+        "type": "keyword"
+      },
+      "consumer_id": {
+        "type": "long"
+      },
+      "consumer_url": {
+        "type": "keyword"
+      },
+      "request_body": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "response_body": {
+        "type": "text"
+      },
+      "http_status": {
+        "type": "integer"
+      },
+      "status": {
+        "type": "byte"
+      },
+      "retry_count": {
+        "type": "integer"
+      },
+      "error_message": {
+        "type": "text"
+      },
+      "push_time": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "next_retry_time": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "completed_time": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      }
+    }
+  },
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 1,
+    "index.lifecycle.name": "message-log-policy",
+    "index.lifecycle.rollover_alias": "consumer_push_log"
+  }
+}
